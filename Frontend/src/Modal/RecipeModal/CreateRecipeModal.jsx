@@ -29,6 +29,10 @@ function CreateRecipeModal(props) {
     document.getElementById();
   };
 
+  const createRecipe = () => {
+    alert("hi");
+  };
+
   const ingredients = [];
   for (let i = 1; i <= count; i++) {
     ingredients.push(<br />);
@@ -60,7 +64,7 @@ function CreateRecipeModal(props) {
         <br />
         <br />
         <br />
-        <Button>Create Recipe</Button>
+        <Button onClick={createRecipe}>Create Recipe</Button>
       </Box>
     </Modal>
   );
