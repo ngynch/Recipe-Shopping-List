@@ -17,7 +17,7 @@ function StartPage() {
       <Button onClick={() => navigate("/meal_planner")}>
         Create Week Meal Plan
       </Button>
-      <Button onClick="">Generate Shopping List</Button>
+      <Button>Generate Shopping List</Button>
 
       {showModal && (
         <CreateRecipeModal showModal={showModal} setShowModal={setShowModal} />
