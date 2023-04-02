@@ -2,10 +2,11 @@ import React, { createContext, useState } from "react";
 import Modal from "@mui/material/Modal";
 import TextField from "@mui/material/TextField";
 import Box from "@mui/material/Box";
-import { Button, darkScrollbar } from "@mui/material";
+import Button from "@mui/material/Button";
 import Ingredient from "./Ingredient";
 import { isValid } from "../../Utils/IngredientUtils";
 import axios from "axios";
+import RecipeService from "../../services/RecipeService";
 
 function CreateRecipeModal(props) {
   const [recipeName, setRecipeName] = useState("");
@@ -39,11 +40,12 @@ function CreateRecipeModal(props) {
     if (!verifySyntax()) {
       alert("check your ingredients");
     } else {
-      axios.post(process.env.REACT_APP_BACKEND + "/recipe/add", {
-        name: recipeName,
-        ingredients: ingredientList,
-      });
-      handleClose();
+      RecipeService.createRecipe(recipeName, ingredientList)
+      .then((res) => {
+        alert("recipe created!")
+        props.setShowModal(false)
+      })
+      .catch((err) => alert(err))
     }
   };
 

@@ -12,6 +12,7 @@ import java.util.Optional;
 import java.util.Set;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:3000")
 public class RecipeController {
 
     RecipeService recipeService;
@@ -21,12 +22,12 @@ public class RecipeController {
         this.recipeService = recipeService;
     }
 
-    @GetMapping("/recipe")
+    @GetMapping("/recipes")
     public List<Recipe> getAllRecipes() {
         return recipeService.getAllRecipes();
     }
 
-    @GetMapping("/recipe/{id}")
+    @GetMapping("/recipes/{id}")
     public Recipe getRecipeById(@PathVariable Long id) {
         Optional<Recipe> recipe = recipeService.findRecipeById(id);
         if (recipe.isEmpty()) {
@@ -35,7 +36,7 @@ public class RecipeController {
         return recipe.get();
     }
 
-    @PostMapping("/recipe/add")
+    @PostMapping("/recipes")
     public Recipe addRecipe(@RequestBody Recipe recipe) {
         return recipeService.addRecipe(recipe);
     }
