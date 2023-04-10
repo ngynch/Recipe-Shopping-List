@@ -14,6 +14,7 @@ import java.util.Optional;
 import java.util.Set;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:3000")
 public class IngredientController {
 
     IngredientService ingredientService;
@@ -23,21 +24,17 @@ public class IngredientController {
         this.ingredientService = ingredientService;
     }
 
-    @GetMapping("/ingredient")
+    @GetMapping("/ingredients")
     public List<Ingredient> getIngredients() {
         return ingredientService.getIngredients();
     }
 
-    @GetMapping("/ingredient/{id}")
+    @GetMapping("/ingredients/{id}")
     public Ingredient getIngredientById(@PathVariable Long id) {
-        Optional<Ingredient> ingredient = ingredientService.findIngredientById(id);
-        if (ingredient.isEmpty()){
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Could not find ingredient with id: " + id);
-        }
-        return ingredient.get();
+        return ingredientService.findIngredientById(id);
     }
 
-    @PostMapping("ingredient/add")
+    @PostMapping("/ingredients")
     public Ingredient addIngredient(@RequestBody Ingredient ingredient) {
         return ingredientService.addIngredient(ingredient);
     }

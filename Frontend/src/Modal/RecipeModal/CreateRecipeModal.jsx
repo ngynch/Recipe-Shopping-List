@@ -5,7 +5,6 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Ingredient from "./Ingredient";
 import { isValid } from "../../Utils/IngredientUtils";
-import axios from "axios";
 import RecipeService from "../../services/RecipeService";
 
 function CreateRecipeModal(props) {
@@ -74,6 +73,8 @@ function CreateRecipeModal(props) {
   return (
     <Modal open={props.showModal} onClose={handleClose}>
       <Box sx={style}>
+
+
         <TextField
           label="Recipe Name"
           onChange={(event) => setRecipeName(event.target.value)}

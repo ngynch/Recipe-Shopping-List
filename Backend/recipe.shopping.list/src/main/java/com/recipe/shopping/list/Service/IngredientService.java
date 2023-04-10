@@ -23,8 +23,8 @@ public class IngredientService {
         return ingredientRepo.findAll();
     }
 
-    public Optional<Ingredient> findIngredientById(Long id) {
-        return ingredientRepo.findById(id);
+    public Ingredient findIngredientById(Long id) {
+        return ingredientRepo.findById(id).orElseThrow();
     }
 
     public Ingredient addIngredient(Ingredient ingredient){

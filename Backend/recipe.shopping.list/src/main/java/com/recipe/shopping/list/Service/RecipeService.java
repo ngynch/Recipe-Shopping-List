@@ -1,10 +1,13 @@
 package com.recipe.shopping.list.Service;
 
+import com.recipe.shopping.list.Entity.Ingredient;
 import com.recipe.shopping.list.Entity.Recipe;
+import com.recipe.shopping.list.Entity.RecipeIngredient;
 import com.recipe.shopping.list.Repository.RecipeRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -22,8 +25,8 @@ public class RecipeService {
         return recipeRepo.findAll();
     }
 
-    public Optional<Recipe> findRecipeById(Long id) {
-        return recipeRepo.findById(id);
+    public Recipe findRecipeById(Long id) {
+        return recipeRepo.findById(id).orElseThrow();
     }
 
     public Recipe addRecipe(Recipe recipe) {

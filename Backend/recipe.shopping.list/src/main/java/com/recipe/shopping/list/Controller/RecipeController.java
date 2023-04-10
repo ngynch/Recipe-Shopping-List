@@ -29,11 +29,7 @@ public class RecipeController {
 
     @GetMapping("/recipes/{id}")
     public Recipe getRecipeById(@PathVariable Long id) {
-        Optional<Recipe> recipe = recipeService.findRecipeById(id);
-        if (recipe.isEmpty()) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Could not find recipe with id: " + id);
-        }
-        return recipe.get();
+        return recipeService.findRecipeById(id);
     }
 
     @PostMapping("/recipes")

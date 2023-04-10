@@ -17,31 +17,15 @@ public class Recipe {
     @Column(name = "name")
     private String name;
 
-    @Column(name = "ingredients")
-    @ManyToMany(cascade = CascadeType.ALL)
-    private List<Ingredient> ingredients;
+    @JoinColumn
+    @ManyToMany
+    private List<RecipeIngredient> recipeIngredients;
 
-    public String getName() {
-        return name;
+    public List<RecipeIngredient> getRecipeIngredients() {
+        return recipeIngredients;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public List<Ingredient> getIngredients() {
-        return ingredients;
-    }
-
-    public void setIngredients(List<Ingredient> ingredients) {
-        this.ingredients = ingredients;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Long getId() {
-        return id;
+    public void setRecipeIngredients(List<RecipeIngredient> recipeIngredients) {
+        this.recipeIngredients = recipeIngredients;
     }
 }
